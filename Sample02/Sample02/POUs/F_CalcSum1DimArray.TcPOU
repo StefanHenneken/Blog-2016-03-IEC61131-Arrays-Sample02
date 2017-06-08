@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4019.2">
+  <POU Name="F_CalcSum1DimArray" Id="{3590e68a-b67f-4764-a841-72ae2fcc79e4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_CalcSum1DimArray : LREAL
+VAR_IN_OUT
+	arrData		: ARRAY[*] OF LREAL;
+END_VAR
+VAR
+	nIndex		: DINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_CalcSum1DimArray := 0;
+FOR nIndex := LOWER_BOUND(arrData, 1) TO UPPER_BOUND(arrData, 1) DO
+	F_CalcSum1DimArray := F_CalcSum1DimArray + arrData[nIndex];
+END_FOR
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
